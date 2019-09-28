@@ -56,7 +56,7 @@ int main()
 	}
 	return 0;
 }
-######################### alleviating the limitaion of single digit #####################################
+######################### alleviating the limitaion of single digit operand        #####################################
 #include<iostream>
 #include<stack>
 using namespace std;
