@@ -61,5 +61,4 @@ int main()
             cin>>score[i];
         cout<<teamFromation(score, noMember, m)<<endl;
     }
-    return 0;
 }
