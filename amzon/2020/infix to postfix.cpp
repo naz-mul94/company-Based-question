@@ -23,7 +23,7 @@ string conversion(string ex)
         inToPo.push(ex[i]);
         else if(ex[i]==')')
         {
-            while(!inToPo.empty()&inToPo.top()!='(')
+            while(!inToPo.empty()&&inToPo.top()!='(')
             {
                 temp+=inToPo.top();
                 inToPo.pop();
