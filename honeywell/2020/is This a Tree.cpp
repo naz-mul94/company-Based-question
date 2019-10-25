@@ -27,7 +27,7 @@ string formTree(vector<vector<char>> tree, unordered_set<char>s)
     unordered_map<char, char>par;
     unordered_map<char, vector<char>> parToChild;
     for(int i=0;i<n;i++)
-    {cout<<tree[i][0]<<" "<<tree[i][1]<<endl;
+    {//cout<<tree[i][0]<<" "<<tree[i][1]<<endl;
         if(parToChild.find(tree[i][0])==parToChild.end())
         {
             parToChild[tree[i][0]].push_back(tree[i][1]);
@@ -54,7 +54,7 @@ string formTree(vector<vector<char>> tree, unordered_set<char>s)
         }
         else
         {
-            cout<<(char)tree[i][0]<<" "<<(char)tree[i][1]<<endl;
+            //cout<<(char)tree[i][0]<<" "<<(char)tree[i][1]<<endl;
             if(tree[i][1]==parToChild[tree[i][0]][0] || tree[i][1]==parToChild[tree[i][0]][1])
                 error.insert(2);
             else error.insert(1);
