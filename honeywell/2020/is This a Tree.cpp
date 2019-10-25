@@ -93,5 +93,5 @@ int main()
         s.insert(tree[i][0]);
         s.insert(tree[i][1]);
     }
-    cout<<formTree(tree, s);    
+    cout<<formTree(tree, s)<<endl;    
 }
