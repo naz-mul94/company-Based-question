@@ -94,3 +94,91 @@ int main()
     }
     cout<<formTree(tree, s)<<endl;    
 }
+#######################################################################################################
+string printString(int root, unordered_map<char, vector<int>> parToChild)
+{
+    string ans=string(1,root),c1="", c2="";
+    if(parToChild.find(root)==parToChild.end())
+        return "("+ans+")";
+    if(parToChild[root].size()>0)
+    {
+        c1=printString(parToChild[root][0], parToChild);
+    }
+
+    if(parToChild[root].size()>1)
+    {
+        c2=printString(parToChild[root][1], parToChild);
+    }
+    return "("+ans+c1+c2+")";
+}
+
+string preOrder(vector<vector<char>> pre, unordered_set<char> nodes, int n)
+{
+    string ans=""; 
+    set<int> error;
+    unordered_map<char, vector<int>> parToChild;
+    unordered_map<char, char> par;
+    for(int i=0;i<n;i++)
+    {
+        if(parToChild.find(pre[i][0])==parToChild.end())
+        {
+            parToChild[pre[i][0]].push_back(pre[i][1]);
+            if(par.find(pre[i][1]) == par.end())
+                par[pre[i][1]]=pre[i][0];
+            else
+            {
+                error.insert(3);
+            }
+        }
+        else if(parToChild[pre[i][0]].size()==1)
+        {
+            if(pre[i][1]==parToChild[pre[i][0]][0])
+            {
+                //printf("pre[%d][1]=%c , %c\n",i,  pre[i][1], parToChild[pre[i][0]][0]);
+                error.insert(2);
+                continue;
+            }
+            if(parToChild[pre[i][0]][0]<pre[i][1])
+            {
+                parToChild[pre[i][0]].push_back(pre[i][1]);
+            }
+            else
+            {
+                parToChild[pre[i][0]].push_back(parToChild[pre[i][0]][0]);
+                parToChild[pre[i][0]][0]=pre[i][1];
+            }
+
+            if(par.find(pre[i][1]) == par.end())
+                par[pre[i][1]]=pre[i][0];
+            else
+            {
+                error.insert(3);
+            }
+
+
+        }
+        else
+        {
+            if(pre[i][1]==parToChild[pre[i][0]][0] || pre[i][1]==parToChild[pre[i][0]][1])
+                error.insert(2);
+            else
+                error.insert(1);
+
+            if(par.find(pre[i][1]) == par.end())
+                par[pre[i][1]]=pre[i][0];
+            else
+            {
+                error.insert(3);
+            }
+        }
+
+        nodes.erase(pre[i][1]);
+    }
+
+    if(nodes.size()==1)
+    {
+        if(error.empty())
+            return ans=printString(*(nodes.begin()), parToChild);
+    }
+    return "E"+to_string(*(error.begin()));
+}
