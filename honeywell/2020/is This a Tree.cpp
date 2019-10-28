@@ -15,7 +15,6 @@ string makeString(char root, unordered_map<char, vector<char>> parToChild)
     left=makeString(parToChild[root][0], parToChild);
     if(parToChild[root].size()>1)
     right=makeString(parToChild[root][1], parToChild);
-cout<<ans+left+right<<endl;
     return "("+ans+left+right+")";
 }
 
