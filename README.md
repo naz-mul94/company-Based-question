@@ -1,7 +1,7 @@
 # Company Based Question Solution.
 This repo conatains company based question and solution.
 
-## contribute makeapullrequest.com/
+## contribute http://makeapullrequest.com/
 If you have some questions that you would like to add, feel free to create a PR. Help this repo grow.
 
 ## Company
