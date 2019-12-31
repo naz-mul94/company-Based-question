@@ -13,7 +13,7 @@ This repo conatains company based question and solution.
 - [Appdynamics](appDynamics)
 - [cohesity](cohesity)
 - [flipkart](flipkart)
-- [Goldman Sacks](goldman Sacks)
+- [GoldmanSacks](goldman Sacks)
 - [Honeywell](honeywell)
 - [Mathworks](mathworks)
 - [Microsoft](microsoft)
