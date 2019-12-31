@@ -1,7 +1,7 @@
 # Company Based Question Solution.
 This repo conatains company based question and solution.
 
-## [contribute](http://makeapullrequest.com/)
+## contribute [https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square](http://makeapullrequest.com/)
 If you have some questions that you would like to add, feel free to create a PR. Help this repo grow.
 
 ## Company
