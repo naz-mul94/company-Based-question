@@ -7,3 +7,15 @@ This repo conatains company based question and solution.
 3. If you want to add question or question and solution asked in any company.
 4. for any suggestion, comment in respective problem.
 
+## Company
+- [Adobe](adobe)
+- [Amazon](amzon)
+- [Appdynamics](appDynamics)
+- [cohesity](cohesity)
+- [flipkart](flipkart)
+- [Goldman sacks](goldman Sacks)
+- [Honeywell](honeywell)
+- [Mathworks](mathworks)
+- [Microsoft](microsoft)
+- [Salesforce](salesforce)
+
