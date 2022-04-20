@@ -1,0 +1,87 @@
+/*
+problem: You are given a static stream of string like:
+"00:00:12 this is first", 
+"00:00:13 this is second", 
+"00:00:14 this is third", 
+"00:00:21 this is first",
+"00:00:35 this is first"
+
+You need to filter this such that no message is repeated in last 10 sec
+*/
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<vector>
+#include<string>
+#include<sstream>
+#include<unordered_set>
+#include<tuple>
+using namespace std;
+int process_time(string time)
+{
+    string hh, mm, ss;
+    int start=0, del_pos;
+    del_pos = time.find(':', start);
+    hh = time.substr(start, del_pos-start);
+    
+    
+    start = del_pos+1;
+    del_pos = time.find(':', start);
+    mm = time.substr(start, del_pos-start);
+    
+    start = del_pos+1;
+    del_pos = time.find(':', start);
+    ss = time.substr(start, del_pos-start);
+    int s = stoi(hh)*3600 + stoi(mm)*60 + stoi(ss);
+    return s;
+}
+
+tuple<string, string> process_el(string ele)
+{
+    string time, msg;
+    int del_pos = ele.find(' ');
+    time = ele.substr(0, del_pos);
+    msg = ele.substr(del_pos+1, ele.size()-del_pos-1);
+    return make_tuple(time, msg);
+}
+int main() {
+    
+vector<string> input{"00:00:12 this is first", "00:00:13 this is second", "00:00:14 this is third", "00:00:21 this is first", "00:00:35 this is first"};
+    // Write C++ code here
+    unordered_set<string> window;
+    vector<string> res;
+    int window_begin_idx=-1, window_end_idx =0;
+    int window_start_time = 0;
+    int interval = 10, curr_time, temp_time_s;
+    string time, msg, start_time="00:00:00", start_msg="";
+    window.insert("");
+    for(int i = 0;i<input.size();i++){
+        tie(time, msg) = process_el(input[i]);
+        curr_time = process_time(time);
+        if(window_start_time + 10<=curr_time){
+            do{
+                if(window.find(start_msg) != window.end())
+                    window.erase(start_msg);
+                window_begin_idx++;
+                tie(start_time, start_msg) = process_el(input[window_begin_idx]);
+                window_start_time = process_time(start_time);
+            }
+            while(window_start_time + 10<= curr_time);
+            if(window.find(msg)==window.end()){
+                window.insert(msg);
+                res.push_back(input[i]);
+            }
+            
+        }
+        else{
+            if(window.find(msg)==window.end()){
+                window.insert(msg);
+                res.push_back(input[i]);
+            }
+        }
+        
+        
+    }
+    for(string y:res)
+            cout<<y<<endl;
+
+}
